@@ -1,0 +1,36 @@
+import pygame
+
+def main():
+    pygame.init()
+    tela = pygame.display.set_mode([800, 600])
+    pygame.display.set_caption("Jogando na Historia")
+    frames = pygame.time.Clock()
+
+    sair = False
+    while sair != True:
+        for event in pygame.event.get():
+         if event.type == pygame.QUIT:
+             sair = True
+         else:
+             startmenu()
+    pygame.quit()
+
+def startmenu():
+#Definir botoes
+ retStart = pygame.Rect(50,270,100,30)
+ retExit = pygame.Rect(50,390,100,30)
+#Definir tela e a cor
+ tela = pygame.display.set_mode([800, 600])
+ tela.fill((10,10,10))
+#desenho do botao
+ pygame.draw.rect(tela,(27,109,37), retStart) 
+ pygame.draw.rect(tela,(27,109,37), retExit)
+#atualiza a tela
+ pygame.display.update()
+#detecta se o botao foi pressionado
+ if pygame.mouse.get_pressed() == (1,0,0):
+             mouseposition = pygame.mouse.get_pos()
+             if retStart.collidepoint(mouseposition):
+              comecar_o_jogo()
+             if retExit.collidepoint(mouseposition):
+              pygame.quit()
