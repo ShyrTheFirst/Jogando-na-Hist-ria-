@@ -1,36 +1,80 @@
 import pygame
 
+#inicializar fonte
+pygame.font.init()
+font_default = pygame.font.get_default_font()
+fonte_mensagens = pygame.font.SysFont(font_default, 50)
+fonte_gameplay = pygame.font.SysFont(font_default, 30)
+
+#var cores
+azul_fundo = (51,216,230)
+verde = (120,218,122)
+verde_escuro = (28,100,30) 
+vermelho = (193,30,30)
+vermelho_escuro = (126,20,20)
+verde_grama = (23,115,30)
+
+
 def main():
     pygame.init()
     tela = pygame.display.set_mode([800, 600])
-    pygame.display.set_caption("Jogando na Historia")
+    pygame.display.set_caption("RPG na História")
     frames = pygame.time.Clock()
-
     sair = False
     while sair != True:
         for event in pygame.event.get():
          if event.type == pygame.QUIT:
              sair = True
          else:
-             startmenu()
+             titulo()
     pygame.quit()
 
-def startmenu():
-#Definir botoes
- retStart = pygame.Rect(50,270,100,30)
- retExit = pygame.Rect(50,390,100,30)
-#Definir tela e a cor
+def titulo():
+#Definir formato e posição dos botões
+ retStart = pygame.Rect(46,264,170,30)
+ retExit = pygame.Rect(46,384,160,30)
+ 
+ #Definir a tela e a cor da tela
  tela = pygame.display.set_mode([800, 600])
  tela.fill((10,10,10))
-#desenho do botao
- pygame.draw.rect(tela,(27,109,37), retStart) 
- pygame.draw.rect(tela,(27,109,37), retExit)
-#atualiza a tela
+ 
+#Criar o botão e o texto do mesmo
+ pygame.draw.rect(tela,verde, retStart)
+ inicio = fonte_gameplay.render('INICIAR O JOGO', 1, verde_escuro)
+ tela.blit(inicio, (50,270))
+ pygame.draw.rect(tela,vermelho, retExit)
+ sair = fonte_gameplay.render('SAIR DO JOGO', 1, vermelho_escuro)
+ tela.blit(sair, (50,390))
+ 
+#Atualizar tela
  pygame.display.update()
-#detecta se o botao foi pressionado
+ 
+ #Detectar clique no botão
  if pygame.mouse.get_pressed() == (1,0,0):
-             mouseposition = pygame.mouse.get_pos()
-             if retStart.collidepoint(mouseposition):
-              comecar_o_jogo()
-             if retExit.collidepoint(mouseposition):
-              pygame.quit()
+    mouseposition = pygame.mouse.get_pos()
+    if retStart.collidepoint(mouseposition):
+     comecar_o_jogo()
+    if retExit.collidepoint(mouseposition):
+     pygame.quit()
+    
+def comecar_o_jogo():
+ #Definir a tela e a cor da tela    
+ tela = pygame.display.set_mode([800, 600])
+ tela.fill((0,0,0))
+ 
+#definir frames
+ frames = pygame.time.Clock()
+
+#retangulo de teste 
+ retSelf = pygame.Rect(110,110,110,230)
+ pygame.draw.rect(tela,(0,0,0), retSelf)
+ 
+#atualizar a tela 
+ pygame.display.update()
+ frames.tick(60)
+ 
+#criar jogo a partir daqui   
+ 
+    
+    
+main()     
