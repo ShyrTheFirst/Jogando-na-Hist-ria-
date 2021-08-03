@@ -30,9 +30,9 @@ class Lord:
 
     def medidor(self):
      self.medidor = print("Seu medidor de paz está em : ", medidor_paz, "/", "Seu Medidor de guerra está em : ", medidor_guerra)
-
-     guerra = False
+     
     def guerra_ou_paz(self):
+        guerra = False
         if medidor_guerra > medidor_paz:
             if medidor_guerra > 3:
                 guerra = True
