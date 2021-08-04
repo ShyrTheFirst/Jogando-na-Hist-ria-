@@ -1,14 +1,25 @@
 import random
 
-#variaveis
+################################
+# Variaveis                    #
+#                              #
+################################
 lista_medidor = (0,1,2,3,4,5)
 medidor_paz = random.choice(lista_medidor)
 medidor_guerra = random.choice(lista_medidor)
-#Dados do jogador
+
+################################
+# Dados do jogador             #
+#                              #
+################################
 Nome = input("Digite seu nome aqui: ")
 Sexo = input("Você é (H)omem OU (M)ulher? ")
+################################
 
-#Escolha corretamente o sexo
+################################
+# Caso escolha sexo errado     #
+#                              #
+################################
 Continuar = False
 while Continuar == False:
  if Sexo == "Homem" or Sexo == "H" :
@@ -19,7 +30,10 @@ while Continuar == False:
     print("Digite Homem ou Mulher, ou ainda H ou M, para continuar.")
     Continuar = False
 
-#Criação da classe para iniciar
+################################
+# Classe do jogador            #
+#                              #
+################################
 class Lord:
     def __init__(self, name):
      if Sexo == "Homem" or Sexo == "H":
@@ -27,10 +41,17 @@ class Lord:
      if Sexo == "Mulher" or Sexo == "M":
          self.name = "Senhora" + " " + name
     
-
+################################
+# Definição dos medidores      #
+#                              #
+################################
     def medidor(self):
      self.medidor = print("Seu medidor de paz está em : ", medidor_paz, "/", "Seu Medidor de guerra está em : ", medidor_guerra)
-     
+
+################################
+# Preparar para guerra ou paz  #
+#                              #
+################################     
     def guerra_ou_paz(self):
         guerra = False
         if medidor_guerra > medidor_paz:
@@ -47,20 +68,74 @@ class Lord:
 
         if guerra == True:
             print("Você precisa se preparar pra guerra!")
-            termos_de_guerra = ("Lutar até a morte", "Se render logo", "Diplomacia", "Fugir")
-            escolha_de_guerra = random.choice(termos_de_guerra)
-            print("Você deve - ", escolha_de_guerra)
-            aceitar_destino = input("Você aceita seu destino? (S/N):")
-            if aceitar_destino == S:
-                print("Vamos começar!")
-            else:
-                print("Volte quando estiver pronto")
         else:
-            print("Aproveite a paz!")
+            print("Aproveite a paz! Evolua suas fazendas")
 
-
+################################
+# Inicio do jogo!              #
+# Definição da Classe do PJ    #
+################################
 personagem = Lord(Nome)
 
+################################
+# Info inicial para o PJ       #
+#                              #
+################################
 print(personagem.name)
 personagem.medidor()
 personagem.guerra_ou_paz()
+iniciar_objetivo = True
+
+################################
+# Criação do Objetivo          #
+#                              #
+################################
+while iniciar_objetivo == True:
+ termos_de_guerra = ("Evoluir quarteis", "Evoluir estabulo", "Diplomacia", "Treinar mais soldados")
+ objetivo = random.choice(termos_de_guerra)
+ print("Você deve - ", objetivo)
+ aceitar_destino = input("Você aceita seu destino? (S/N):")
+ if aceitar_destino == "S":
+  print("Vamos começar!")
+  iniciar_jogo = True
+  iniciar_objetivo = False
+ else:
+  print("Volte quando estiver pronto")
+  iniciar_jogo = False
+  iniciar_objetivo = False
+
+################################
+# Teste do Objetivo            #
+#                              #
+################################
+if iniciar_jogo == True:
+ nv_quartel = 0
+ nv_estabulo = 0
+ num_soldados = 0
+ diplomata = False
+ if objetivo == "Evoluir quarteis":
+    if nv_quartel == 2:
+        print("muito bom!")
+    else:
+        print("Você ainda precisa evoluir mais!")
+ elif objetivo == "Evoluir estabulo":
+    if nv_estabulo == 2:
+        print("muito bom!")
+    else:
+        print("Você ainda precisa evoluir mais!")
+ elif objetivo == "Treinar Mais soldados":
+    if num_soldados == 10:
+        print("muito bom!")
+    else:
+        print("Você ainda precisa evoluir mais!")
+ elif objetivo == "Diplomacia":
+    if diplomata == True:
+        print("muito bom!")
+    else:
+        print("Você não conquistou o titulo de diplomata ainda!")
+else:
+    print("foi bom jogar com você")
+################################
+#                              #
+################################
+     
