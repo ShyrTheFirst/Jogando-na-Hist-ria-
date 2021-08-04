@@ -70,6 +70,32 @@ class Lord:
             print("Você precisa se preparar pra guerra!")
         else:
             print("Aproveite a paz! Evolua suas fazendas")
+            
+################################
+# Teste do Objetivo            #
+#                              #
+################################
+def testar_objetivo():
+ if objetivo == "Evoluir quarteis":
+    if nv_quartel == 2:
+        print("muito bom!")
+    else:
+        print("Você ainda precisa evoluir mais!")
+ elif objetivo == "Evoluir estabulo":
+    if nv_estabulo == 2:
+        print("muito bom!")
+    else:
+        print("Você ainda precisa evoluir mais!")
+ elif objetivo == "Treinar Mais soldados":
+    if num_soldados == 10:
+        print("muito bom!")
+    else:
+        print("Você ainda precisa evoluir mais!")
+ elif objetivo == "Diplomacia":
+    if diplomata == True:
+        print("muito bom!")
+    else:
+        print("Você não conquistou o titulo de diplomata ainda!") 
 
 ################################
 # Inicio do jogo!              #
@@ -105,37 +131,21 @@ while iniciar_objetivo == True:
   iniciar_objetivo = False
 
 ################################
-# Teste do Objetivo            #
+# Niveis iniciais              #
 #                              #
 ################################
-if iniciar_jogo == True:
- nv_quartel = 0
- nv_estabulo = 0
- num_soldados = 0
- diplomata = False
- if objetivo == "Evoluir quarteis":
-    if nv_quartel == 2:
-        print("muito bom!")
-    else:
-        print("Você ainda precisa evoluir mais!")
- elif objetivo == "Evoluir estabulo":
-    if nv_estabulo == 2:
-        print("muito bom!")
-    else:
-        print("Você ainda precisa evoluir mais!")
- elif objetivo == "Treinar Mais soldados":
-    if num_soldados == 10:
-        print("muito bom!")
-    else:
-        print("Você ainda precisa evoluir mais!")
- elif objetivo == "Diplomacia":
-    if diplomata == True:
-        print("muito bom!")
-    else:
-        print("Você não conquistou o titulo de diplomata ainda!")
+nv_quartel = 0
+nv_estabulo = 0
+num_soldados = 0
+diplomata = False
+
+################################
+#Primeiro Teste de Objetivo    #
+################################
+print(objetivo)
+teste = input("testar objetivo? (S/N): ")
+if teste == "S":
+ testar_objetivo()
 else:
-    print("foi bom jogar com você")
-################################
-#                              #
-################################
+ pass
      
