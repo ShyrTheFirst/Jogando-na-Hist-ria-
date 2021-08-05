@@ -9,6 +9,13 @@ medidor_paz = random.choice(lista_medidor)
 medidor_guerra = random.choice(lista_medidor)
 
 ################################
+#Intro do Jogo                 #
+################################
+print("TEXTO DE INTRODUÇÃO PARA O JOGO")
+
+
+
+################################
 # Dados do jogador             #
 #                              #
 ################################
@@ -27,7 +34,7 @@ while Continuar == False:
  elif Sexo == "Mulher" or Sexo == "M" :
     Continuar = True
  else:
-    print("Digite Homem ou Mulher, ou ainda H ou M, para continuar.")
+    input("Digite Homem ou Mulher, ou ainda H ou M, para continuar. (H/M) :")
     Continuar = False
 
 ################################
@@ -95,7 +102,9 @@ def testar_objetivo():
     if diplomata == True:
         print("muito bom!")
     else:
-        print("Você não conquistou o titulo de diplomata ainda!") 
+        print("Você não conquistou o titulo de diplomata ainda!")
+
+        
 
 ################################
 # Inicio do jogo!              #
@@ -142,10 +151,32 @@ diplomata = False
 ################################
 #Primeiro Teste de Objetivo    #
 ################################
-print(objetivo)
-teste = input("testar objetivo? (S/N): ")
-if teste == "S":
- testar_objetivo()
-else:
- pass
+testar_objetivo()
+
+################################
+#Definições das fases          #
+################################
+def evento_aleatorio():
+    lista_evento = ("eventoaleat1", "eventoaleat2", "eventoaleat3", "etc")
+    evento_escolhido = random.choice(lista_evento)
+    return evento_escolhido
+def fase_01():
+    print("inicio da fase, texto de abertura")
+    #pode escolher uma opção : evoluir quartel, evoluir estabulo, contratar soldados, realizar diplomacia com outros feudos
+    #pode escolher mais uma vez uma das opções.
+    #evento_aleatorio()
+
+################################
+#Inicio do Jogo                #
+################################
+while iniciar_jogo == True:
+    fase_01()
+    fase_02()
+    fase_03()
+    fase_04()
+    fase_final()
+
+
+
+
      
