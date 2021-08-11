@@ -9,6 +9,15 @@ medidor_paz = random.choice(lista_medidor)
 medidor_guerra = random.choice(lista_medidor)
 
 ################################
+# Niveis iniciais              #
+#                              #
+################################
+nv_quartel = 0
+nv_estabulo = 0
+num_soldados = 0
+diplomacia = 0
+
+################################
 #Intro do Jogo                 #
 ################################
 print("TEXTO DE INTRODUÇÃO PARA O JOGO")
@@ -34,7 +43,7 @@ while Continuar == False:
  elif Sexo == "Mulher" or Sexo == "M" :
     Continuar = True
  else:
-    input("Digite Homem ou Mulher, ou ainda H ou M, para continuar. (H/M) :")
+    Sexo= input("Digite Homem ou Mulher, ou ainda H ou M, para continuar. (H/M) :")
     Continuar = False
 
 ################################
@@ -94,15 +103,15 @@ def testar_objetivo():
     else:
         print("Você ainda precisa evoluir mais!")
  elif objetivo == "Treinar Mais soldados":
-    if num_soldados == 10:
+    if num_soldados == 20:
         print("muito bom!")
     else:
         print("Você ainda precisa evoluir mais!")
  elif objetivo == "Diplomacia":
-    if diplomata == True:
+    if diplomacia == 2:
         print("muito bom!")
     else:
-        print("Você não conquistou o titulo de diplomata ainda!")
+        print("Você não conquistou o titulo de diplomata ainda! Conheça mais povos")
 
         
 
@@ -140,15 +149,6 @@ while iniciar_objetivo == True:
   iniciar_objetivo = False
 
 ################################
-# Niveis iniciais              #
-#                              #
-################################
-nv_quartel = 0
-nv_estabulo = 0
-num_soldados = 0
-diplomata = False
-
-################################
 #Primeiro Teste de Objetivo    #
 ################################
 testar_objetivo()
@@ -157,26 +157,49 @@ testar_objetivo()
 #Definições das fases          #
 ################################
 def evento_aleatorio():
-    lista_evento = ("eventoaleat1", "eventoaleat2", "eventoaleat3", "etc")
+    lista_evento = ("ataque inesperado", "fome entre os servos", "doenças infecciosas")
     evento_escolhido = random.choice(lista_evento)
     return evento_escolhido
+    
 def fase_01():
+    global nv_quartel
+    global nv_estabulo
+    global num_soldados
+    global diplomacia
+    
     print("inicio da fase, texto de abertura")
-    #pode escolher uma opção : evoluir quartel, evoluir estabulo, contratar soldados, realizar diplomacia com outros feudos
+    escolha_01= input("O que você quer evoluir primeiro: 1 para quartel/2 para estabulo/3 para soldados/4 para buscar diplomacia ")
+    if escolha_01 == 1:
+    	print("voce evoluiu o Quartel em 1")
+    	nv_quartel = nv_quartel + 1
+    elif escolha_01 == 2:
+    	print("voce evoluiu o Estabulo em 1")
+    	nv_estabulo = nv_estabulo + 1
+    elif escolha_01 == 3:
+    	print("voce contratou mais 10 soldados")
+    	num_soldados = num_soldados + 1
+    elif escolha_01 == 4:
+    	print("voce fez diplomacia com um novo país")
+    	diplomacia = diplomacia + 1
+    elif int(escolha_01) > 5 or int(escolha_01) < 1:
+    	escolha_01 = input ("digite um valor valido (1 , 2 , 3 ou 4 ")
+    print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
+    print(evento_aleatorio())
+    
     #pode escolher mais uma vez uma das opções.
-    #evento_aleatorio()
+
 
 ################################
 #Inicio do Jogo                #
 ################################
 while iniciar_jogo == True:
     fase_01()
-    fase_02()
-    fase_03()
-    fase_04()
-    fase_final()
-
-
-
-
-     
+    print("final")
+    input("voce curtiu?")
+    print("seu nivel do quartel")
+    print(nv_quartel)
+    iniciar_jogo = False
+  #  fase_02()
+ #   fase_03()
+ #   fase_04()
+  #  fase_final()
