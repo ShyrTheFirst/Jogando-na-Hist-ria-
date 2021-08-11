@@ -96,8 +96,7 @@ while iniciar_jogo == True:
     fase_01()
     print("final")
     input("voce curtiu?")
-    print("seu nivel do quartel")
-    print(config.nv_quartel)
+    
     iniciar_jogo = False
   #  fase_02()
  #   fase_03()
