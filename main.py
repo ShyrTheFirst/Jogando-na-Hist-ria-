@@ -2,6 +2,11 @@ import random
 from intro import intro
 import config
 from config import fase_01
+from config import fase_02
+from config import fase_03
+from config import fase_04
+from config import fase_05
+from config import fase_final
 
 intro("start")
 
@@ -94,11 +99,13 @@ testar_objetivo()
 iniciar_jogo = True
 while iniciar_jogo == True:
     fase_01()
+    fase_02()
+    fase_03()
+    fase_04()
+    fase_05()
+    fase_final()
     print("final")
-    input("voce curtiu?")
+    
     
     iniciar_jogo = False
-  #  fase_02()
- #   fase_03()
- #   fase_04()
-  #  fase_final()
+

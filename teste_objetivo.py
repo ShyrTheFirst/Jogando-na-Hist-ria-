@@ -1,4 +1,5 @@
 import random
+import config
 import niveis_iniciais
 
 termos_de_guerra = ("Evoluir quarteis", "Evoluir estabulo", "Diplomacia", "Treinar mais soldados")
