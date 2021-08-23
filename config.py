@@ -1,418 +1,80 @@
+import pygame
 import random
 import niveis_iniciais
-
-################################
-#Definições das fases          #
-################################
-def evento_aleatorio():
-    lista_evento = ("ataque inesperado", "fome entre os servos", "doenças infecciosas")
-    evento_escolhido = random.choice(lista_evento)
-    return evento_escolhido
+def niveis():
+    Endgame = False
+    tela = pygame.display.set_mode([1024, 768])
+    frames = pygame.time.Clock()
+    azul_fundo = (51,216,230)
+    verde_ganhou = (120,218,122)
+    vermelho_perdeu = (193,30,30)
+    verde_grama = (23,115,30)
     
-def fase_01():
- print("inicio da fase, texto de abertura")
- 
-################################
-#Escolha 1 da fase 1           #
-################################
- escolhendo ="fase01.1"
- while escolhendo =="fase01.1":
-    escolha_01= int(input("O que você quer evoluir primeiro: 1 para quartel/2 para estabulo/3 para soldados/4 para buscar diplomacia "))
-    if escolha_01 == 1:
-    	print("voce evoluiu o Quartel em 1")
-    	niveis_iniciais.nv_quartel +=1
-    	escolhendo = "passou de fase"
-    elif escolha_01 == 2:
-    	print("voce evoluiu o Estabulo em 1")
-    	niveis_iniciais.nv_estabulo +=1
-    	escolhendo = "passou de fase"
-    elif escolha_01 == 3:
-    	print("voce contratou mais 10 soldados")
-    	niveis_iniciais.num_soldados +=10
-    	escolhendo = "passou de fase"
-    elif escolha_01 == 4:
-    	print("voce fez diplomacia com um novo país")
-    	niveis_iniciais.diplomacia +=1
-    	escolhendo = "passou de fase"
-    elif escolha_01> 5 or escolha_01< 1:
-        print("Digite um valor valido")
-        escolhendo ="fase01.1"
+    lvl01 = False
+    if lvl01 == False:
+    #Lose game rect
+     ret1nv_quartel = pygame.Rect(100,100,50,50)
+     ret2nv_estabulo = pygame.Rect(200,100,50,50)
+     ret3num_soldados = pygame.Rect(300,100,50,50)
+     ret4diplomacia = pygame.Rect(400,100,50,50)
+     ret5Sair = pygame.Rect(500,100,50,50)
+     
+     while lvl01 == False: 
+      for event in pygame.event.get():
+         if event.type == pygame.QUIT:
+             pygame.quit()
+         
+      frames.tick(120)
+      tela.fill(azul_fundo)
+      pygame.draw.rect(tela,(235,11,0), ret1nv_quartel)
+      pygame.draw.rect(tela,(235,11,0), ret2nv_estabulo)
+      pygame.draw.rect(tela,(235,11,0), ret3num_soldados)
+      pygame.draw.rect(tela,(235,11,0), ret4diplomacia)
+      pygame.draw.rect(tela,(235,11,0), ret5Sair)
+      pygame.display.update()
+      mouseclick = pygame.mouse.get_pos()
+      if pygame.mouse.get_pressed() == (1,0,0):
+       if ret1nv_quartel.collidepoint(mouseclick):
+            lvl01 = True
+            print("voce evoluiu o Quartel em 1")
+            niveis_iniciais.nv_quartel +=1
+            Endgame = False
+            break
+       if ret2nv_estabulo.collidepoint(mouseclick):
+            lvl01 = True
+            print("voce evoluiu o Quartel em 1")
+            niveis_iniciais.nv_estabulo +=1
+            Endgame = False
+            break
+       if ret3num_soldados.collidepoint(mouseclick):
+            lvl01 = True
+            print("voce evoluiu o Quartel em 1")
+            niveis_iniciais.num_soldados +=10
+            Endgame = False
+            break
+       if ret4diplomacia.collidepoint(mouseclick):
+            lvl01 = True
+            print("voce evoluiu o Quartel em 1")
+            niveis_iniciais.diplomacia +=1
+            Endgame = False
+            break
+       if ret5Sair.collidepoint(mouseclick):
+            lvl01 = True
+            print("Saindo")
+            Endgame = True
+            break
+            
+      if Endgame == True:
+        startmenu()
         
 ################################
 #Editar essa parte             #
 ################################
- print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
- print(evento_aleatorio())
-
-################################
-#Escolha 2 da fase 1           #
-################################
- escolhendo ="fase01.2"
- while escolhendo =="fase01.2":
-    escolha_02= int(input("O que você quer evoluir primeiro: 1 para quartel/2 para estabulo/3 para soldados/4 para buscar diplomacia "))
-    if escolha_02 == 1:
-    	print("voce evoluiu o Quartel em 1")
-    	niveis_iniciais.nv_quartel +=1
-    	escolhendo = "passou de fase"
-    elif escolha_02 == 2:
-    	print("voce evoluiu o Estabulo em 1")
-    	niveis_iniciais.nv_estabulo +=1
-    	escolhendo = "passou de fase"
-    elif escolha_02 == 3:
-    	print("voce contratou mais 10 soldados")
-    	niveis_iniciais.num_soldados +=10
-    	escolhendo = "passou de fase"
-    elif escolha_02 == 4:
-    	print("voce fez diplomacia com um novo país")
-    	niveis_iniciais.diplomacia +=1
-    	escolhendo = "passou de fase"
-    elif escolha_02> 5 or escolha_02< 1:
-        print("Digite um valor valido")
-        escolhendo ="fase01.2"
-        
-################################
-#Editar essa parte             #
-################################
- print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
- print(evento_aleatorio())
-
-def fase_02():
- print("inicio da fase, texto de abertura")
- 
-################################
-#Escolha 1 da fase 2           #
-################################
- escolhendo ="fase02.1"
- while escolhendo =="fase02.1":
-    escolha_03= int(input("O que você quer evoluir primeiro: 1 para quartel/2 para estabulo/3 para soldados/4 para buscar diplomacia "))
-    if escolha_03 == 1:
-    	print("voce evoluiu o Quartel em 1")
-    	niveis_iniciais.nv_quartel +=1
-    	escolhendo = "passou de fase"
-    elif escolha_03 == 2:
-    	print("voce evoluiu o Estabulo em 1")
-    	niveis_iniciais.nv_estabulo +=1
-    	escolhendo = "passou de fase"
-    elif escolha_03 == 3:
-    	print("voce contratou mais 10 soldados")
-    	niveis_iniciais.num_soldados +=10
-    	escolhendo = "passou de fase"
-    elif escolha_03 == 4:
-    	print("voce fez diplomacia com um novo país")
-    	niveis_iniciais.diplomacia +=1
-    	escolhendo = "passou de fase"
-    elif escolha_03> 5 or escolha_03< 1:
-        print("Digite um valor valido")
-        escolhendo ="fase02.1"
-        
-################################
-#Editar essa parte             #
-################################
- print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
- print(evento_aleatorio())
-
-################################
-#Escolha 2 da fase 2           #
-################################
- escolhendo ="fase02.2"
- while escolhendo =="fase02.2":
-    escolha_04= int(input("O que você quer evoluir primeiro: 1 para quartel/2 para estabulo/3 para soldados/4 para buscar diplomacia "))
-    if escolha_04 == 1:
-    	print("voce evoluiu o Quartel em 1")
-    	niveis_iniciais.nv_quartel +=1
-    	escolhendo = "passou de fase"
-    elif escolha_04 == 2:
-    	print("voce evoluiu o Estabulo em 1")
-    	niveis_iniciais.nv_estabulo +=1
-    	escolhendo = "passou de fase"
-    elif escolha_04 == 3:
-    	print("voce contratou mais 10 soldados")
-    	niveis_iniciais.num_soldados +=10
-    	escolhendo = "passou de fase"
-    elif escolha_04 == 4:
-    	print("voce fez diplomacia com um novo país")
-    	niveis_iniciais.diplomacia +=1
-    	escolhendo = "passou de fase"
-    elif escolha_04> 5 or escolha_04< 1:
-        print("Digite um valor valido")
-        escolhendo ="fase02.2"
-        
-################################
-#Editar essa parte             #
-################################
- print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
- print(evento_aleatorio())
-
-def fase_03():
- print("inicio da fase, texto de abertura")
- 
-################################
-#Escolha 1 da fase 3           #
-################################
- escolhendo ="fase03.1"
- while escolhendo =="fase03.1":
-    escolha_05= int(input("O que você quer evoluir primeiro: 1 para quartel/2 para estabulo/3 para soldados/4 para buscar diplomacia "))
-    if escolha_05 == 1:
-    	print("voce evoluiu o Quartel em 1")
-    	niveis_iniciais.nv_quartel +=1
-    	escolhendo = "passou de fase"
-    elif escolha_05 == 2:
-    	print("voce evoluiu o Estabulo em 1")
-    	niveis_iniciais.nv_estabulo +=1
-    	escolhendo = "passou de fase"
-    elif escolha_05 == 3:
-    	print("voce contratou mais 10 soldados")
-    	niveis_iniciais.num_soldados +=10
-    	escolhendo = "passou de fase"
-    elif escolha_05 == 4:
-    	print("voce fez diplomacia com um novo país")
-    	niveis_iniciais.diplomacia +=1
-    	escolhendo = "passou de fase"
-    elif escolha_05> 5 or escolha_05< 1:
-        print("Digite um valor valido")
-        escolhendo ="fase03.1"
-        
-################################
-#Editar essa parte             #
-################################
- print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
- print(evento_aleatorio())
-
-################################
-#Escolha 2 da fase 3           #
-################################
- escolhendo ="fase03.2"
- while escolhendo =="fase03.2":
-    escolha_06= int(input("O que você quer evoluir primeiro: 1 para quartel/2 para estabulo/3 para soldados/4 para buscar diplomacia "))
-    if escolha_06 == 1:
-    	print("voce evoluiu o Quartel em 1")
-    	niveis_iniciais.nv_quartel +=1
-    	escolhendo = "passou de fase"
-    elif escolha_06 == 2:
-    	print("voce evoluiu o Estabulo em 1")
-    	niveis_iniciais.nv_estabulo +=1
-    	escolhendo = "passou de fase"
-    elif escolha_06 == 3:
-    	print("voce contratou mais 10 soldados")
-    	niveis_iniciais.num_soldados +=10
-    	escolhendo = "passou de fase"
-    elif escolha_06 == 4:
-    	print("voce fez diplomacia com um novo país")
-    	niveis_iniciais.diplomacia +=1
-    	escolhendo = "passou de fase"
-    elif escolha_06> 5 or escolha_06< 1:
-        print("Digite um valor valido")
-        escolhendo ="fase03.2"
-        
-################################
-#Editar essa parte             #
-################################
- print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
- print(evento_aleatorio())
-
-def fase_04():
- print("inicio da fase, texto de abertura")
- 
-################################
-#Escolha 1 da fase 4           #
-################################
- escolhendo ="fase04.1"
- while escolhendo =="fase04.1":
-    escolha_07= int(input("O que você quer evoluir primeiro: 1 para quartel/2 para estabulo/3 para soldados/4 para buscar diplomacia "))
-    if escolha_07 == 1:
-    	print("voce evoluiu o Quartel em 1")
-    	niveis_iniciais.nv_quartel +=1
-    	escolhendo = "passou de fase"
-    elif escolha_07 == 2:
-    	print("voce evoluiu o Estabulo em 1")
-    	niveis_iniciais.nv_estabulo +=1
-    	escolhendo = "passou de fase"
-    elif escolha_07 == 3:
-    	print("voce contratou mais 10 soldados")
-    	niveis_iniciais.num_soldados +=10
-    	escolhendo = "passou de fase"
-    elif escolha_07 == 4:
-    	print("voce fez diplomacia com um novo país")
-    	niveis_iniciais.diplomacia +=1
-    	escolhendo = "passou de fase"
-    elif escolha_07> 5 or escolha_07< 1:
-        print("Digite um valor valido")
-        escolhendo ="fase04.1"
-        
-################################
-#Editar essa parte             #
-################################
- print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
- print(evento_aleatorio())
-
-################################
-#Escolha 2 da fase 4           #
-################################
- escolhendo ="fase04.2"
- while escolhendo =="fase04.2":
-    escolha_08= int(input("O que você quer evoluir primeiro: 1 para quartel/2 para estabulo/3 para soldados/4 para buscar diplomacia "))
-    if escolha_08 == 1:
-    	print("voce evoluiu o Quartel em 1")
-    	niveis_iniciais.nv_quartel +=1
-    	escolhendo = "passou de fase"
-    elif escolha_08 == 2:
-    	print("voce evoluiu o Estabulo em 1")
-    	niveis_iniciais.nv_estabulo +=1
-    	escolhendo = "passou de fase"
-    elif escolha_08 == 3:
-    	print("voce contratou mais 10 soldados")
-    	niveis_iniciais.num_soldados +=10
-    	escolhendo = "passou de fase"
-    elif escolha_08 == 4:
-    	print("voce fez diplomacia com um novo país")
-    	niveis_iniciais.diplomacia +=1
-    	escolhendo = "passou de fase"
-    elif escolha_08> 5 or escolha_08< 1:
-        print("Digite um valor valido")
-        escolhendo ="fase04.2"
-        
-################################
-#Editar essa parte             #
-################################
- print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
- print(evento_aleatorio())
-
-def fase_05():
- print("inicio da fase, texto de abertura")
- 
-################################
-#Escolha 1 da fase 5           #
-################################
- escolhendo ="fase05.1"
- while escolhendo =="fase05.1":
-    escolha_09= int(input("O que você quer evoluir primeiro: 1 para quartel/2 para estabulo/3 para soldados/4 para buscar diplomacia "))
-    if escolha_09 == 1:
-    	print("voce evoluiu o Quartel em 1")
-    	niveis_iniciais.nv_quartel +=1
-    	escolhendo = "passou de fase"
-    elif escolha_09 == 2:
-    	print("voce evoluiu o Estabulo em 1")
-    	niveis_iniciais.nv_estabulo +=1
-    	escolhendo = "passou de fase"
-    elif escolha_09 == 3:
-    	print("voce contratou mais 10 soldados")
-    	niveis_iniciais.num_soldados +=10
-    	escolhendo = "passou de fase"
-    elif escolha_09 == 4:
-    	print("voce fez diplomacia com um novo país")
-    	niveis_iniciais.diplomacia +=1
-    	escolhendo = "passou de fase"
-    elif escolha_09> 5 or escolha_09< 1:
-        print("Digite um valor valido")
-        escolhendo ="fase05.1"
-        
-################################
-#Editar essa parte             #
-################################
- print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
- print(evento_aleatorio())
-
-################################
-#Escolha 2 da fase 5           #
-################################
- escolhendo ="fase05.2"
- while escolhendo =="fase05.2":
-    escolha_10= int(input("O que você quer evoluir primeiro: 1 para quartel/2 para estabulo/3 para soldados/4 para buscar diplomacia "))
-    if escolha_10 == 1:
-    	print("voce evoluiu o Quartel em 1")
-    	niveis_iniciais.nv_quartel +=1
-    	escolhendo = "passou de fase"
-    elif escolha_10 == 2:
-    	print("voce evoluiu o Estabulo em 1")
-    	niveis_iniciais.nv_estabulo +=1
-    	escolhendo = "passou de fase"
-    elif escolha_10 == 3:
-    	print("voce contratou mais 10 soldados")
-    	niveis_iniciais.num_soldados +=10
-    	escolhendo = "passou de fase"
-    elif escolha_10 == 4:
-    	print("voce fez diplomacia com um novo país")
-    	niveis_iniciais.diplomacia +=1
-    	escolhendo = "passou de fase"
-    elif escolha_10> 5 or escolha_10< 1:
-        print("Digite um valor valido")
-        escolhendo ="fase05.2"
-        
-################################
-#Editar essa parte             #
-################################
- print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
- print(evento_aleatorio())
-
-def fase_final():
- print("inicio da fase, texto de abertura")
- 
-################################
-#Escolha 1 da fase final       #
-################################
- escolhendo ="fasefinal.1"
- while escolhendo =="fasefinal.1":
-    escolha_11= int(input("O que você quer evoluir primeiro: 1 para quartel/2 para estabulo/3 para soldados/4 para buscar diplomacia "))
-    if escolha_11 == 1:
-    	print("voce evoluiu o Quartel em 1")
-    	niveis_iniciais.nv_quartel +=1
-    	escolhendo = "passou de fase"
-    elif escolha_11 == 2:
-    	print("voce evoluiu o Estabulo em 1")
-    	niveis_iniciais.nv_estabulo +=1
-    	escolhendo = "passou de fase"
-    elif escolha_11 == 3:
-    	print("voce contratou mais 10 soldados")
-    	niveis_iniciais.num_soldados +=10
-    	escolhendo = "passou de fase"
-    elif escolha_11 == 4:
-    	print("voce fez diplomacia com um novo país")
-    	niveis_iniciais.diplomacia +=1
-    	escolhendo = "passou de fase"
-    elif escolha_11> 5 or escolha_11< 1:
-        print("Digite um valor valido")
-        escolhendo ="fasefinal.1"
-        
-################################
-#Editar essa parte             #
-################################
- print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
- print(evento_aleatorio())
- 
-################################
-#Escolha 2 da fase final       #
-################################
- escolhendo ="fasefinal.2"
- while escolhendo =="fasefinal.2":
-    escolha_12= int(input("O que você quer evoluir primeiro: 1 para quartel/2 para estabulo/3 para soldados/4 para buscar diplomacia "))
-    if escolha_12 == 1:
-    	print("voce evoluiu o Quartel em 1")
-    	niveis_iniciais.nv_quartel +=1
-    	escolhendo = "passou de fase"
-    elif escolha_12 == 2:
-    	print("voce evoluiu o Estabulo em 1")
-    	niveis_iniciais.nv_estabulo +=1
-    	escolhendo = "passou de fase"
-    elif escolha_12 == 3:
-    	print("voce contratou mais 10 soldados")
-    	niveis_iniciais.num_soldados +=10
-    	escolhendo = "passou de fase"
-    elif escolha_12 == 4:
-    	print("voce fez diplomacia com um novo país")
-    	niveis_iniciais.diplomacia +=1
-    	escolhendo = "passou de fase"
-    elif escolha_12> 5 or escolha_12< 1:
-        print("Digite um valor valido")
-        escolhendo ="fasefinal.2"
-        
-################################
-#Editar essa parte             #
-################################
- print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
- print(evento_aleatorio())
- print(niveis_iniciais.nv_quartel)
- print(niveis_iniciais.nv_estabulo)
- print(niveis_iniciais.num_soldados)
- print(niveis_iniciais.diplomacia)
+print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
+#print(evento_aleatorio())
+print(niveis_iniciais.nv_quartel)
+print(niveis_iniciais.nv_estabulo)
+print(niveis_iniciais.num_soldados)
+print(niveis_iniciais.diplomacia)
 
 
