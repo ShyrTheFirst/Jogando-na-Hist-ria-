@@ -1,0 +1,8 @@
+Adaptando o código para pygame.
+Base, com os quadrados para clicar já está pronto
+
+falta:
+Input através da janela do pygame
+Output na janela do pygame
+renderizar imagens
+transformar o quadrado em imagem para o jogador saber o que clicar
