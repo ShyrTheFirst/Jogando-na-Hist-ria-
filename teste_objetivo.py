@@ -1,6 +1,6 @@
 import random
 import config
-import niveis_iniciais
+import niveis_iniciais as nv
 
 termos_de_guerra = ("Evoluir quarteis", "Evoluir estabulo", "Diplomacia", "Treinar mais soldados")
 objetivo = random.choice(termos_de_guerra)
@@ -19,24 +19,22 @@ else:
 ################################
 def testar_objetivo():
  if objetivo == "Evoluir quarteis":
-    if niveis_iniciais.nv_quartel == 2:
+    if nv.nv_quartel == 2:
         print("muito bom!")
     else:
         print("Você ainda precisa evoluir mais!")
  elif objetivo == "Evoluir estabulo":
-    if niveis_iniciais.nv_estabulo == 2:
+    if nv.nv_estabulo == 2:
         print("muito bom!")
     else:
         print("Você ainda precisa evoluir mais!")
  elif objetivo == "Treinar Mais soldados":
-    if niveis_iniciais.num_soldados == 20:
+    if nv.num_soldados == 20:
         print("muito bom!")
     else:
         print("Você ainda precisa evoluir mais!")
  elif objetivo == "Diplomacia":
-    if niveis_iniciais.diplomacia == 2:
+    if nv.diplomacia == 2:
         print("muito bom!")
     else:
         print("Você não conquistou o titulo de diplomata ainda! Conheça mais povos")
-
-  
