@@ -1,6 +1,7 @@
 import pygame
 import random
 import niveis_iniciais
+
 def niveis():
     Endgame = False
     tela = pygame.display.set_mode([1024, 768])
@@ -17,24 +18,24 @@ def niveis():
         #QUARTEL
      local_quartel = (700,528)
      ret1nv_quartel = pygame.Rect(700,528,150,120)
-     quartel = pygame.image.load(r'C:\Users\sokir\Desktop\Jogando na História\imagens\quartel.png')
+     quartel = pygame.image.load(r'imagens\quartel.png')
         #ESTABULO
      local_estabulo = (215,420)
      ret2nv_estabulo = pygame.Rect(215,420,150,120)
-     estabulo = pygame.image.load(r'C:\Users\sokir\Desktop\Jogando na História\imagens\estabulo.png')
+     estabulo = pygame.image.load(r'imagens\estabulo.png')
         #CAMPO DE TREINAMENTO
      local_camp_treino = (520,400)
      ret3num_soldados = pygame.Rect(520,400,150,120)
-     camp_treino = pygame.image.load(r'C:\Users\sokir\Desktop\Jogando na História\imagens\camp_treino.jpg')
+     camp_treino = pygame.image.load(r'imagens\camp_treino.jpg')
         #EMBAIXADA
      local_embaixada = (250,300)
      ret4diplomacia = pygame.Rect(250,300,150,120)
-     embaixada = pygame.image.load(r'C:\Users\sokir\Desktop\Jogando na História\imagens\embaixada.png')
+     embaixada = pygame.image.load(r'imagens\embaixada.png')
      ret5Sair = pygame.Rect(950,100,50,50)
      ret6edificio = pygame.Rect(600,240,150,120)
-     edificio = pygame.image.load(r'C:\Users\sokir\Desktop\Jogando na História\imagens\edificio.png')
-     aldeia = pygame.image.load(r'C:\Users\sokir\Desktop\Jogando na História\imagens\aldeia.jpg')
-     lvl_up = pygame.image.load(r'C:\Users\sokir\Desktop\Jogando na História\imagens\lvl_up.png')
+     edificio = pygame.image.load(r'imagens\edificio.png')
+     aldeia = pygame.image.load(r'imagens\aldeia.jpg')
+     lvl_up = pygame.image.load(r'imagens\lvl_up.png')
 
      #600,240 = edificio principal
      
@@ -85,5 +86,7 @@ def niveis():
             print(niveis_iniciais.diplomacia)
             
       if Endgame == True:
+        from menu import startmenu
         startmenu()
+        break
     
