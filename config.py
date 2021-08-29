@@ -16,68 +16,74 @@ def niveis():
     #Lose game rect
         #QUARTEL
      local_quartel = (700,528)
-     ret1nv_quartel = pygame.Rect(700,528,50,50)
+     ret1nv_quartel = pygame.Rect(700,528,150,120)
      quartel = pygame.image.load(r'C:\Users\sokir\Desktop\Jogando na História\imagens\quartel.png')
         #ESTABULO
-     local_estabulo = (300,452)
-     ret2nv_estabulo = pygame.Rect(300,452,50,50)
+     local_estabulo = (215,420)
+     ret2nv_estabulo = pygame.Rect(215,420,150,120)
      estabulo = pygame.image.load(r'C:\Users\sokir\Desktop\Jogando na História\imagens\estabulo.png')
         #CAMPO DE TREINAMENTO
-     local_camp_treino = (600,452)
-     ret3num_soldados = pygame.Rect(600,452,50,50)
+     local_camp_treino = (520,400)
+     ret3num_soldados = pygame.Rect(520,400,150,120)
      camp_treino = pygame.image.load(r'C:\Users\sokir\Desktop\Jogando na História\imagens\camp_treino.jpg')
         #EMBAIXADA
-     local_embaixada = (300,332)
-     ret4diplomacia = pygame.Rect(300,332,50,50)
+     local_embaixada = (250,300)
+     ret4diplomacia = pygame.Rect(250,300,150,120)
      embaixada = pygame.image.load(r'C:\Users\sokir\Desktop\Jogando na História\imagens\embaixada.png')
      ret5Sair = pygame.Rect(950,100,50,50)
+     ret6edificio = pygame.Rect(600,240,150,120)
+     edificio = pygame.image.load(r'C:\Users\sokir\Desktop\Jogando na História\imagens\edificio.png')
      aldeia = pygame.image.load(r'C:\Users\sokir\Desktop\Jogando na História\imagens\aldeia.jpg')
+     lvl_up = pygame.image.load(r'C:\Users\sokir\Desktop\Jogando na História\imagens\lvl_up.png')
+
+     #600,240 = edificio principal
      
      while lvl01 == False: 
-      for event in pygame.event.get():
-         if event.type == pygame.QUIT:
-             pygame.quit()
-         
+              
       frames.tick(120)
       tela.blit(aldeia, (0,0))
-      pygame.draw.rect(tela,marrom_claro, ret1nv_quartel)
       tela.blit(quartel, local_quartel)
-      pygame.draw.rect(tela,marrom_claro, ret2nv_estabulo)
       tela.blit(estabulo, local_estabulo)
-      pygame.draw.rect(tela,marrom_claro, ret3num_soldados)
       tela.blit(camp_treino, local_camp_treino)
-      pygame.draw.rect(tela,marrom_claro, ret4diplomacia)
       tela.blit(embaixada, local_embaixada)
       pygame.draw.rect(tela,marrom_claro, ret5Sair)
       pygame.display.update()
       mouseclick = pygame.mouse.get_pos()
-      if pygame.mouse.get_pressed() == (1,0,0):
-       if ret1nv_quartel.collidepoint(mouseclick):
+      for event in pygame.event.get():
+         if event.type == pygame.QUIT:
+             pygame.quit()
+         if event.type == pygame.MOUSEBUTTONDOWN:
+          if event.button == 1:
+           if ret1nv_quartel.collidepoint(mouseclick):
+            tela.blit(lvl_up, mouseclick)
+            pygame.display.update()
             print("voce evoluiu o Quartel em 1")
             niveis_iniciais.nv_quartel +=1
-       if ret2nv_estabulo.collidepoint(mouseclick):
+           if ret2nv_estabulo.collidepoint(mouseclick):
+            tela.blit(lvl_up, mouseclick)
+            pygame.display.update()
             print("voce evoluiu o Estabulo em 1")
             niveis_iniciais.nv_estabulo +=1
-       if ret3num_soldados.collidepoint(mouseclick):
+           if ret3num_soldados.collidepoint(mouseclick):
+            tela.blit(lvl_up, mouseclick)
+            pygame.display.update()
             print("voce treinou 10 novos soldados")
             niveis_iniciais.num_soldados +=10
-       if ret4diplomacia.collidepoint(mouseclick):
+           if ret4diplomacia.collidepoint(mouseclick):
+            tela.blit(lvl_up, mouseclick)
+            pygame.display.update()
             print("voce fez amizade com 1 novo feudo")
             niveis_iniciais.diplomacia +=1
-       if ret5Sair.collidepoint(mouseclick):
+           if ret5Sair.collidepoint(mouseclick):
             print("Saindo")
             Endgame = True
             break
+           if ret6edificio.collidepoint(mouseclick):
+            print(niveis_iniciais.nv_quartel)
+            print(niveis_iniciais.nv_estabulo)
+            print(niveis_iniciais.num_soldados)
+            print(niveis_iniciais.diplomacia)
             
       if Endgame == True:
         startmenu()
-        
-################################
-#Editar essa parte             #
-################################
-print("Agora voce pode continuar expandindo seu imperio... mas antes vamos ver o que esta acontecendo por la")
-#print(evento_aleatorio())
-print(niveis_iniciais.nv_quartel)
-print(niveis_iniciais.nv_estabulo)
-print(niveis_iniciais.num_soldados)
-print(niveis_iniciais.diplomacia)
+    
