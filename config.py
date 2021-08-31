@@ -2,6 +2,12 @@ import pygame
 import random
 import niveis_iniciais
 
+#inicializar fonte
+pygame.font.init()
+font_default = pygame.font.get_default_font()
+fonte_info = pygame.font.SysFont(font_default, 30)
+
+
 def niveis():
     Endgame = False
     tela = pygame.display.set_mode([1024, 768])
@@ -58,21 +64,25 @@ def niveis():
            if ret1nv_quartel.collidepoint(mouseclick):
             tela.blit(lvl_up, mouseclick)
             pygame.display.update()
+            pygame.time.delay(100)
             print("voce evoluiu o Quartel em 1")
             niveis_iniciais.nv_quartel +=1
            if ret2nv_estabulo.collidepoint(mouseclick):
             tela.blit(lvl_up, mouseclick)
             pygame.display.update()
+            pygame.time.delay(100)
             print("voce evoluiu o Estabulo em 1")
             niveis_iniciais.nv_estabulo +=1
            if ret3num_soldados.collidepoint(mouseclick):
             tela.blit(lvl_up, mouseclick)
             pygame.display.update()
+            pygame.time.delay(100)
             print("voce treinou 10 novos soldados")
             niveis_iniciais.num_soldados +=10
            if ret4diplomacia.collidepoint(mouseclick):
             tela.blit(lvl_up, mouseclick)
             pygame.display.update()
+            pygame.time.delay(100)
             print("voce fez amizade com 1 novo feudo")
             niveis_iniciais.diplomacia +=1
            if ret5Sair.collidepoint(mouseclick):
@@ -80,10 +90,22 @@ def niveis():
             Endgame = True
             break
            if ret6edificio.collidepoint(mouseclick):
-            print(niveis_iniciais.nv_quartel)
-            print(niveis_iniciais.nv_estabulo)
-            print(niveis_iniciais.num_soldados)
-            print(niveis_iniciais.diplomacia)
+            fundo_info = pygame.image.load(r'imagens\fundo_info.png')
+            tela.blit(fundo_info, (600,240))
+            quartel_info = "nivel do quartel: {}".format(niveis_iniciais.nv_quartel)
+            quartel_font = fonte_info.render(quartel_info, 1, vermelho_perdeu)
+            tela.blit(quartel_font, (600,240))
+            estabulo_info = "nivel do estabulo: {}".format(niveis_iniciais.nv_estabulo)
+            estabulo_font = fonte_info.render(estabulo_info, 1, vermelho_perdeu)
+            tela.blit(estabulo_font, (600,260))
+            soldados_info = "Quantidade de soldados: {}".format(niveis_iniciais.num_soldados)
+            soldados_font = fonte_info.render(soldados_info, 1, vermelho_perdeu)
+            tela.blit(soldados_font, (600,280))
+            diplomacia_info = "Feudos amigos: {}".format(niveis_iniciais.diplomacia)
+            diplomacia_font = fonte_info.render(diplomacia_info, 1, vermelho_perdeu)
+            tela.blit(diplomacia_font, (600,300))
+            pygame.display.update()
+            pygame.time.delay(1000)
             
       if Endgame == True:
         from menu import startmenu
