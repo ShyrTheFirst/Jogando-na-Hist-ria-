@@ -15,4 +15,7 @@ import random
 RANDOM_TIME = random.randint(1,60)
 random_timer = RANDOM_TIME
 acoes_tomadas = 0
+turnos = 0
+turnos_aleatorios = random.randint(2,10)
+
 

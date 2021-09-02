@@ -74,6 +74,7 @@ def niveis():
             print("voce evoluiu o Quartel em 1")
             nv.nv_quartel +=1
             nv.acoes_tomadas += 1
+            print(nv.acoes_tomadas)
            if ret2nv_estabulo.collidepoint(mouseclick):
             tela.blit(lvl_up, mouseclick)
             pygame.display.update()
@@ -81,6 +82,7 @@ def niveis():
             print("voce evoluiu o Estabulo em 1")
             nv.nv_estabulo +=1
             nv.acoes_tomadas += 1
+            print(nv.acoes_tomadas)
            if ret3num_soldados.collidepoint(mouseclick):
             tela.blit(lvl_up, mouseclick)
             pygame.display.update()
@@ -88,6 +90,7 @@ def niveis():
             print("voce treinou 10 novos soldados")
             nv.num_soldados +=10
             nv.acoes_tomadas += 1
+            print(nv.acoes_tomadas)
            if ret4diplomacia.collidepoint(mouseclick):
             tela.blit(lvl_up, mouseclick)
             pygame.display.update()
@@ -95,6 +98,7 @@ def niveis():
             print("voce fez amizade com 1 novo feudo")
             nv.diplomacia +=1
             nv.acoes_tomadas += 1
+            print(nv.acoes_tomadas)
            if ret5Sair.collidepoint(mouseclick):
             print("Saindo")
             Endgame = True
@@ -121,7 +125,20 @@ def niveis():
         from menu import startmenu
         startmenu()
         break
-    
+
+      if nv.acoes_tomadas == 2:
+          #passando de turno
+          nv.turnos += 1
+          nv.acoes_tomadas -= 2
+          print("passando de turno")
+          print(nv.turnos)
+          print(nv.turnos_aleatorios)
+        
+      #PORQUE NV TURNOS E TURNOS ALEATORIOS NÃO FUNCIONAM NESSE IF?????
+      if nv.turnos == nv.turnos_aleatorios:
+        from teste_objetivo import testar_objetivo
+        testar_objetivo()
+        
       nv.player_timer -=nv.delta_time 
       nv.random_timer -=nv.delta_time
       nv.delta_time = frames.tick(60)/1000
@@ -134,10 +151,5 @@ def niveis():
          print("O que está acontecendo???")
          #criar algum evento!
          nv.random_timer = nv.RANDOM_TIME
-      if nv.acoes_tomadas == 2:
-          #testar objetivos, fazer com que os objetivos evoluam após a conclusão!
-          #aprimorar o teste, fazer aparecer na tela!!
-          from teste_objetivo import testar_objetivo
-          testar_objetivo()
           
     
