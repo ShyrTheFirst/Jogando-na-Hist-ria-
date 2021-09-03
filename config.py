@@ -1,6 +1,7 @@
 import pygame
 import random
 import niveis_iniciais as nv
+        
 
 #inicializar fonte
 pygame.font.init()
@@ -20,6 +21,7 @@ def niveis():
     
     lvl01 = False
     if lvl01 == False:
+     
         #QUARTEL
      local_quartel = (700,528)
      ret1nv_quartel = pygame.Rect(700,528,150,120)
@@ -41,6 +43,8 @@ def niveis():
      edificio = pygame.image.load(r'imagens\edificio.png')
      aldeia = pygame.image.load(r'imagens\aldeia.jpg')
      lvl_up = pygame.image.load(r'imagens\lvl_up.png')
+     from teste_objetivo import iniciar_objetivo
+     iniciar_objetivo()
 
      #600,240 = edificio principal
 
@@ -56,11 +60,7 @@ def niveis():
       tela.blit(embaixada, local_embaixada)
       pygame.draw.rect(tela,marrom_claro, ret5Sair)
       pygame.display.update()
-      #tem que mostrar na tela!!!
-      #
-      import teste_objetivo
-      #
-      #não esquecer de editar no py de teste_objetivo
+     
       mouseclick = pygame.mouse.get_pos()
       for event in pygame.event.get():
          if event.type == pygame.QUIT:
@@ -74,7 +74,6 @@ def niveis():
             print("voce evoluiu o Quartel em 1")
             nv.nv_quartel +=1
             nv.acoes_tomadas += 1
-            print(nv.acoes_tomadas)
            if ret2nv_estabulo.collidepoint(mouseclick):
             tela.blit(lvl_up, mouseclick)
             pygame.display.update()
@@ -82,7 +81,6 @@ def niveis():
             print("voce evoluiu o Estabulo em 1")
             nv.nv_estabulo +=1
             nv.acoes_tomadas += 1
-            print(nv.acoes_tomadas)
            if ret3num_soldados.collidepoint(mouseclick):
             tela.blit(lvl_up, mouseclick)
             pygame.display.update()
@@ -90,7 +88,6 @@ def niveis():
             print("voce treinou 10 novos soldados")
             nv.num_soldados +=10
             nv.acoes_tomadas += 1
-            print(nv.acoes_tomadas)
            if ret4diplomacia.collidepoint(mouseclick):
             tela.blit(lvl_up, mouseclick)
             pygame.display.update()
@@ -98,7 +95,6 @@ def niveis():
             print("voce fez amizade com 1 novo feudo")
             nv.diplomacia +=1
             nv.acoes_tomadas += 1
-            print(nv.acoes_tomadas)
            if ret5Sair.collidepoint(mouseclick):
             print("Saindo")
             Endgame = True
@@ -119,31 +115,33 @@ def niveis():
             diplomacia_font = fonte_info.render(diplomacia_info, 1, vermelho_perdeu)
             tela.blit(diplomacia_font, (600,300))
             pygame.display.update()
-            pygame.time.delay(1000)
+            pygame.time.wait(1000)
             
       if Endgame == True:
         from menu import startmenu
         startmenu()
         break
 
+      if nv.turnos == nv.turnos_aleatorios:
+          #testando objetivo
+          from teste_objetivo import testar_objetivo
+          testar_objetivo()
+          nv.turnos_totais += nv.turnos
+          nv.turnos = 0
+          iniciar_objetivo()
       if nv.acoes_tomadas == 2:
           #passando de turno
           nv.turnos += 1
           nv.acoes_tomadas -= 2
-          print("passando de turno")
-          print(nv.turnos)
-          print(nv.turnos_aleatorios)
-        
-      #PORQUE NV TURNOS E TURNOS ALEATORIOS NÃO FUNCIONAM NESSE IF?????
-      if nv.turnos == nv.turnos_aleatorios:
-        from teste_objetivo import testar_objetivo
-        testar_objetivo()
+          nv.total_acoes += 2
+      
         
       nv.player_timer -=nv.delta_time 
       nv.random_timer -=nv.delta_time
       nv.delta_time = frames.tick(60)/1000
       if nv.player_timer <= 0:
          #evento de mudança de clima! Vantagens ou desvantagens para certas ações
+         print("mudança climatica")
          nv.player_timer = nv.PLAYER_TIME
       if nv.random_timer <= 0:
         #tem que aparecer na tela também!!!
