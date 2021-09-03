@@ -35,25 +35,25 @@ def iniciar_objetivo():
 def testar_objetivo():
  
  if obj.objetivo == obj.evoluirquartel:
-    if nv.nv_quartel == obj.nivel_objetivo_quartel:
+    if nv.nv_quartel >= obj.nivel_objetivo_quartel:
         box.msgbox("Você alcançou o objetivo, por isso irá ganhar uma recompensa!")
         #criar recompensa
     else:
         box.msgbox("Você não alcançou o objetivo, infelizmente não receberá uma recompensa, o seu nivel: %s , o nivel necessário %s" %(nv.nv_quartel, obj.nivel_objetivo_quartel))
  if obj.objetivo == obj.evoluirestabulo:
-    if nv.nv_estabulo == obj.nivel_objetivo_estabulo:
+    if nv.nv_estabulo >= obj.nivel_objetivo_estabulo:
         box.msgbox("Você alcançou o objetivo, por isso irá ganhar uma recompensa!")
         #criar recompensa
     else:
         box.msgbox("Você não alcançou o objetivo, infelizmente não receberá uma recompensa o seu nivel: %s , o nivel necessário %s" %(nv.nv_estabulo, obj.nivel_objetivo_estabulo))
  if obj.objetivo == obj.treinarx:
-    if nv.num_soldados == obj.nivel_objetivo_treinar:
+    if nv.num_soldados >= obj.nivel_objetivo_treinar:
         box.msgbox("Você alcançou o objetivo, por isso irá ganhar uma recompensa!")
         #criar recompensa
     else:
         box.msgbox("Você não alcançou o objetivo, infelizmente não receberá uma recompensa o seu nivel: %s , o nivel necessário %s" %(nv.num_soldados, obj.nivel_objetivo_treinar))
  if obj.objetivo == obj.expandirx:
-    if nv.diplomacia == obj.nivel_objetivo_expandir:
+    if nv.diplomacia >= obj.nivel_objetivo_expandir:
         box.msgbox("Você alcançou o objetivo, por isso irá ganhar uma recompensa!")
         #criar recompensa
     else:
