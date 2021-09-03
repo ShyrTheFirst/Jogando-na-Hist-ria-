@@ -55,6 +55,6 @@ def testar_objetivo():
  if obj.objetivo == obj.expandirx:
     if nv.diplomacia >= obj.nivel_objetivo_expandir:
         box.msgbox("Você alcançou o objetivo, por isso irá ganhar uma recompensa!")
-        #criar recompensa
+        #criar recompensa#
     else:
         box.msgbox("Você não alcançou o objetivo, infelizmente não receberá uma recompensa o seu nivel: %s , o nivel necessário %s" %(nv.diplomacia, obj.nivel_objetivo_expandir))
