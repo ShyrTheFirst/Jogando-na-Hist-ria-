@@ -43,6 +43,13 @@ def niveis():
      edificio = pygame.image.load(r'imagens\edificio.png')
      aldeia = pygame.image.load(r'imagens\aldeia.jpg')
      lvl_up = pygame.image.load(r'imagens\lvl_up.png')
+     tela.blit(aldeia, (0,0))
+     tela.blit(quartel, local_quartel)
+     tela.blit(estabulo, local_estabulo)
+     tela.blit(camp_treino, local_camp_treino)
+     tela.blit(embaixada, local_embaixada)
+     pygame.draw.rect(tela,marrom_claro, ret5Sair)
+     pygame.display.update()
      from teste_objetivo import iniciar_objetivo
      iniciar_objetivo()
 
@@ -51,16 +58,15 @@ def niveis():
      
      
      while lvl01 == False: 
-              
-      frames.tick(120)
       tela.blit(aldeia, (0,0))
       tela.blit(quartel, local_quartel)
       tela.blit(estabulo, local_estabulo)
       tela.blit(camp_treino, local_camp_treino)
       tela.blit(embaixada, local_embaixada)
       pygame.draw.rect(tela,marrom_claro, ret5Sair)
+      pygame.display.update()        
+      frames.tick(120)
       pygame.display.update()
-     
       mouseclick = pygame.mouse.get_pos()
       for event in pygame.event.get():
          if event.type == pygame.QUIT:

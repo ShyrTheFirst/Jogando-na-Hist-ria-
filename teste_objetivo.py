@@ -8,13 +8,13 @@ import easygui as box
 # Iniciar o Objetivo           #
 ################################
 def iniciar_objetivo():
- obj.nivel_objetivo_quartel = random.randint(2,6)
+ obj.nivel_objetivo_quartel = random.randint(2,6) + nv.nv_quartel
  obj.evoluirquartel = "evoluir quarteis em %s" %obj.nivel_objetivo_quartel
- obj.nivel_objetivo_estabulo = random.randint(2,6)
+ obj.nivel_objetivo_estabulo = random.randint(2,6) + nv.nv_estabulo
  obj.evoluirestabulo = "evoluir estabulo em %s" %obj.nivel_objetivo_estabulo
- obj.nivel_objetivo_expandir = random.randint(3,7)
+ obj.nivel_objetivo_expandir = random.randint(3,7) + nv.diplomacia
  obj.expandirx = "expandir as suas ligações em %s" %obj.nivel_objetivo_expandir
- obj.nivel_objetivo_treinar = random.randint(10,50)
+ obj.nivel_objetivo_treinar = random.randint(10,50) + nv.num_soldados
  obj.treinarx = "Treinar %s soldados" %obj.nivel_objetivo_treinar
  obj.termos_de_guerra = (obj.evoluirquartel, obj.evoluirestabulo, obj.expandirx, obj.treinarx)
  print(obj.termos_de_guerra)
